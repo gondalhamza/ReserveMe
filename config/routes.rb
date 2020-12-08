@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  get 'hotels/search'
-  get 'reservations/create'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+
+      resources :reservations, only: [:create]
+
+      resources :hotels do
+        collection do
+          get 'search', to: 'hotels#search'
+        end
+      end
+
+    end
+  end
+
 end
