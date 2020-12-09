@@ -80,7 +80,7 @@ class Api::V1::ReservationsController < Api::V1::BaseController
     if @guest.nil?
       @guest = Guest.create!(guest_params)
     end
-    json_response(@guest.create_reservation!(reservation_params.merge(guest_id: @guest.id)))
+    json_response(guest: @guest, reservation: @guest.create_reservation!(reservation_params.merge(guest_id: @guest.id)))
   end
 
 
