@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_215008) do
   create_table "reservations", force: :cascade do |t|
     t.integer "guest_id"
     t.integer "hotel_id"
-    t.datetime "arrival_date"
-    t.datetime "departure_date"
+    t.date "arrival_date"
+    t.date "departure_date"
     t.integer "number_of_rooms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -104,7 +104,7 @@ class Api::V1::ReservationsController < Api::V1::BaseController
   def parse_start_time
     return unless string_check
 
-    params[:arrival_date] = Time.at(params[:arrival_date].to_i).to_datetime
-    params[:departure_date] = Time.at(params[:departure_date].to_i).to_datetime
+    params[:arrival_date] = params[:arrival_date].to_date
+    params[:departure_date] = params[:departure_date].to_date
   end
 end

@@ -25,8 +25,8 @@ class ApidocsController < ActionController::API
       key :description, 'Reservations API\'s'
     end
 
-    key :host, 'reserveitnow.herokuapp.com'
-    #key :host, 'localhost:3000'
+    #key :host, 'reserveitnow.herokuapp.com'
+    key :host, 'localhost:3000'
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']

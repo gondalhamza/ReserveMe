@@ -1,6 +1,7 @@
 class Api::V1::HotelsController < Api::V1::BaseController
 
   include Swagger::Blocks
+  include HotelsHelper
 
   swagger_path '/hotels/search' do
     operation :get do
@@ -12,6 +13,20 @@ class Api::V1::HotelsController < Api::V1::BaseController
       key :produces, [
           'application/json'
       ]
+      parameter do
+        key :name, 'name'
+        key :in, :query
+        key :description, 'This should be the name for the guest.'
+        key :required, false
+        key :type, :string
+      end
+      parameter do
+        key :name, 'city'
+        key :in, :query
+        key :description, 'This should be the city for the guest.'
+        key :required, false
+        key :type, :string
+      end
       parameter do
         key :name, 'number_of_rooms'
         key :in, :query
@@ -39,7 +54,7 @@ class Api::V1::HotelsController < Api::V1::BaseController
     end
   end
   def search
-    json_response(Hotel.all)
+    json_response(filter_hotels)
   end
 
 
